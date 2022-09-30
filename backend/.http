@@ -1,0 +1,20 @@
+GET http://localhost:5000/products
+
+###
+
+POST http://localhost:5000/products
+Content-Type: multipart/form-data
+{
+
+}
+
+###
+
+POST http://localhost:5000/products
+Content-Type: multipart/form-data; boundary=abcd
+
+--abcd
+Content-Disposition: form-data; title="Product1"; file="/C:/Users/agusc/Pictures/100903376_p3_master1200.jpg"
+
+Text
+--abcd--
