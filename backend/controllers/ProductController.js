@@ -63,8 +63,8 @@ export const updateProduct = async(req, res) => {
         const fileSize = file.data.length;
         const ext = path.extname(file.name);
         fileName = file.md5 + ext;
-        const allowType = ['.png', '.jpg', '.jpeg'];
-        
+        const allowType = ['.png', '.jpg', '.jpeg']; 
+
         if(!allowType.includes(ext.toLowerCase())) return res.status(422).json({msg: "invalid images sir"});
         if(fileSize > 5000000) return res.status(422).json({msg: "image must be less than 5mb sir"});
 
@@ -72,7 +72,7 @@ export const updateProduct = async(req, res) => {
         fs.unlinkSync(filePath);
 
         file.mv(`./public/images/${fileName}`, (err)=>{
-            if(err) return res.status(500).json({msg: err.message});
+            if(err) return res.status(500).json({msg: err.d});
         });
     }
     const name = req.body.title;
@@ -86,7 +86,7 @@ export const updateProduct = async(req, res) => {
         res.status(200).json({msg: "product updated successfully sir"});
     }
     catch(error){
-        console.log(error.message);
+        console.log(error.d);
     }
     
 }
